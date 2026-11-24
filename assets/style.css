@@ -1,0 +1,323 @@
+/* ============================================================
+   TalentForge — Student Readiness Dashboard
+   assets/style.css  |  Professional light/dark-friendly UI
+   ============================================================ */
+
+/* ---- Google Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ---- Root Tokens ---- */
+:root {
+  --blue-600:   #2563EB;
+  --blue-50:    #EFF6FF;
+  --slate-900:  #0F172A;
+  --slate-700:  #334155;
+  --slate-500:  #64748B;
+  --slate-200:  #E2E8F0;
+  --slate-100:  #F1F5F9;
+  --slate-50:   #F8FAFC;
+  --green-500:  #10B981;
+  --green-50:   #D1FAE5;
+  --amber-500:  #F59E0B;
+  --amber-50:   #FEF3C7;
+  --red-500:    #EF4444;
+  --red-50:     #FEE2E2;
+  --shadow-sm:  0 1px 3px rgba(0,0,0,.08);
+  --shadow-md:  0 4px 12px rgba(0,0,0,.10);
+  --radius:     12px;
+  --transition: .2s ease;
+}
+
+/* ---- Base ---- */
+html, body, [data-testid="stAppViewContainer"] {
+  font-family: 'Inter', sans-serif !important;
+  background: var(--slate-50) !important;
+  color: var(--slate-900) !important;
+}
+
+/* ---- Hide default Streamlit chrome ---- */
+#MainMenu, footer, header { visibility: hidden !important; }
+
+/* ---- Sidebar ---- */
+[data-testid="stSidebar"] {
+  background: white !important;
+  border-right: 1px solid var(--slate-200) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+[data-testid="stSidebar"] .stMarkdown h1,
+[data-testid="stSidebar"] .stMarkdown h2,
+[data-testid="stSidebar"] .stMarkdown h3 {
+  color: var(--blue-600) !important;
+  font-weight: 700 !important;
+}
+
+/* ---- Metric / KPI Tiles ---- */
+[data-testid="stMetric"] {
+  background: white !important;
+  border: 1px solid var(--slate-200) !important;
+  border-radius: var(--radius) !important;
+  padding: 18px 20px !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: box-shadow var(--transition), transform var(--transition) !important;
+}
+[data-testid="stMetric"]:hover {
+  box-shadow: var(--shadow-md) !important;
+  transform: translateY(-2px) !important;
+}
+[data-testid="stMetricLabel"] {
+  font-size: .78rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .06em !important;
+  color: var(--slate-500) !important;
+}
+[data-testid="stMetricValue"] {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: var(--slate-900) !important;
+}
+[data-testid="stMetricDelta"] { font-size: .82rem !important; }
+
+/* ---- Cards ---- */
+.card {
+  background: white;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--slate-700);
+  margin-bottom: 10px;
+}
+.card-subtitle {
+  font-size: .82rem;
+  color: var(--slate-500);
+  margin-bottom: 14px;
+}
+
+/* ---- Hero / Score Gauge Card ---- */
+.score-hero {
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #3B82F6 100%);
+  color: white !important;
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  box-shadow: 0 8px 24px rgba(37,99,235,.30);
+  margin-bottom: 20px;
+}
+.score-hero h1, .score-hero h2, .score-hero p { color: white !important; }
+
+/* ---- Readiness Badges ---- */
+.badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.badge-ready   { background: var(--green-50); color: #065F46; border: 1px solid #6EE7B7; }
+.badge-almost  { background: var(--amber-50); color: #92400E; border: 1px solid #FCD34D; }
+.badge-needs   { background: var(--red-50);   color: #991B1B; border: 1px solid #FCA5A5; }
+
+/* ---- Section Headers ---- */
+.section-header {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  border-left: 4px solid var(--blue-600);
+  padding-left: 10px;
+  margin: 22px 0 12px;
+}
+.section-sub {
+  font-size: .85rem;
+  color: var(--slate-500);
+  margin-top: -8px;
+  margin-bottom: 14px;
+  padding-left: 14px;
+}
+
+/* ---- Alert Banners ---- */
+.alert {
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: .88rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.alert-info    { background: var(--blue-50);  border-left: 4px solid var(--blue-600); }
+.alert-success { background: var(--green-50); border-left: 4px solid var(--green-500); }
+.alert-warning { background: var(--amber-50); border-left: 4px solid var(--amber-500); }
+.alert-danger  { background: var(--red-50);   border-left: 4px solid var(--red-500); }
+
+/* ---- Table Styling ---- */
+[data-testid="stDataFrame"], .stDataFrame {
+  border-radius: var(--radius) !important;
+  border: 1px solid var(--slate-200) !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* ---- Progress Bars ---- */
+.stProgress > div > div > div {
+  border-radius: 999px !important;
+  background: var(--blue-600) !important;
+}
+.stProgress > div > div {
+  border-radius: 999px !important;
+  background: var(--slate-200) !important;
+}
+
+/* ---- Buttons ---- */
+.stButton > button {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: .88rem !important;
+  transition: all var(--transition) !important;
+  border: none !important;
+}
+.stButton > button[kind="primary"] {
+  background: var(--blue-600) !important;
+  color: white !important;
+  box-shadow: 0 2px 6px rgba(37,99,235,.30) !important;
+}
+.stButton > button[kind="primary"]:hover {
+  background: #1D4ED8 !important;
+  box-shadow: 0 4px 12px rgba(37,99,235,.40) !important;
+  transform: translateY(-1px) !important;
+}
+.stButton > button[kind="secondary"] {
+  background: white !important;
+  color: var(--blue-600) !important;
+  border: 1px solid var(--blue-600) !important;
+}
+
+/* ---- Forms & Inputs ---- */
+.stTextInput input, .stNumberInput input,
+.stSelectbox select, .stTextArea textarea {
+  border-radius: 8px !important;
+  border: 1px solid var(--slate-200) !important;
+  font-size: .9rem !important;
+  color: var(--slate-900) !important;
+  transition: border-color var(--transition), box-shadow var(--transition) !important;
+}
+.stTextInput input:focus, .stNumberInput input:focus,
+.stSelectbox select:focus, .stTextArea textarea:focus {
+  border-color: var(--blue-600) !important;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.12) !important;
+  outline: none !important;
+}
+
+/* ---- Plotly chart area ---- */
+.js-plotly-plot .plotly {
+  border-radius: var(--radius);
+}
+
+/* ---- Skill-gap item ---- */
+.gap-item {
+  background: white;
+  border: 1px solid var(--slate-200);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.gap-label {
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--slate-700);
+  min-width: 170px;
+}
+.gap-score {
+  font-size: .85rem;
+  color: var(--slate-500);
+  min-width: 60px;
+}
+
+/* ---- Recommendation cards ---- */
+.rec-card {
+  background: white;
+  border-left: 4px solid var(--blue-600);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+}
+.rec-card.high  { border-left-color: var(--red-500); }
+.rec-card.medium { border-left-color: var(--amber-500); }
+.rec-card.low   { border-left-color: var(--green-500); }
+.rec-title { font-weight: 700; font-size: .95rem; color: var(--slate-900); }
+.rec-actions { margin-top: 8px; padding-left: 16px; }
+.rec-actions li { font-size: .85rem; color: var(--slate-700); margin-bottom: 4px; }
+
+/* ---- Login page ---- */
+.login-wrapper {
+  max-width: 420px;
+  margin: 60px auto;
+  background: white;
+  border-radius: 18px;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+}
+.login-logo {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.login-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  text-align: center;
+  margin-bottom: 4px;
+}
+.login-sub {
+  font-size: .85rem;
+  color: var(--slate-500);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* ---- Utility ---- */
+.text-muted { color: var(--slate-500) !important; font-size: .85rem !important; }
+.text-blue  { color: var(--blue-600) !important; }
+.fw-700     { font-weight: 700 !important; }
+.mt-0       { margin-top: 0 !important; }
+.mb-0       { margin-bottom: 0 !important; }
+.w-full     { width: 100% !important; }
+
+/* ---- Tabs ---- */
+[data-baseweb="tab-list"] {
+  background: var(--slate-100) !important;
+  border-radius: 10px !important;
+  padding: 4px !important;
+  gap: 4px !important;
+}
+[data-baseweb="tab"] {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: .85rem !important;
+}
+[aria-selected="true"][data-baseweb="tab"] {
+  background: white !important;
+  box-shadow: var(--shadow-sm) !important;
+  color: var(--blue-600) !important;
+}
+
+/* ---- Spinner ---- */
+.stSpinner > div { border-top-color: var(--blue-600) !important; }
+
+/* ---- Dividers ---- */
+hr { border-color: var(--slate-200) !important; margin: 20px 0 !important; }
